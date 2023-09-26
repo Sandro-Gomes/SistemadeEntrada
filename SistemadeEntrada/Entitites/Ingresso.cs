@@ -10,13 +10,17 @@ namespace SistemadeEntrada.Entitites
     {
         public Pessoa Pessoa { get; set; }
         public DateTime date { get; set; }
-        public Assento Assento { get; set; }
 
-        public Ingresso(Pessoa pessoa, DateTime date, Assento assento)
+        public Ingresso(Pessoa pessoa, DateTime date)
         {
             Pessoa = pessoa;
             this.date = date;
-            Assento = assento;
+        }
+
+        public override string ToString()
+        {
+            return "Ingresso: " 
+                + Pessoa.ToString();
         }
     }
 }

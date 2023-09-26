@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace SistemadeEntrada.Entitites
 {
-    abstract class Assento
+    internal class Assento
     {
-        public int Fileira { get; set; }
-        public int Coluna { get; set; }
+        public Ingresso Ingresso { get; set; }
 
-        protected Assento(int fileira, int coluna)
+        public Assento()
         {
-            Fileira = fileira;
-            Coluna = coluna;
+            Ingresso = null;
+        }
+
+        public Assento(Ingresso ingresso)
+        {
+            Ingresso = ingresso;
         }
     }
+
 }
