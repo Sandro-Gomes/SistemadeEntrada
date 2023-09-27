@@ -14,32 +14,30 @@ namespace SistemadeEntrada
 
             //Cadastro
 
-            Console.Write("Digite o nome: ");
-            string nome = Console.ReadLine();
-            Console.Write("Digite o CPF: ");
-            string cpf = Console.ReadLine();
+            Console.WriteLine("Bem vindo ao sistema de cadastro:");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("[1] Cadastrar nova pessoa");
+            Console.WriteLine("[2] Ver Assentos");
+            Console.WriteLine("[3] Sair");
+            Console.WriteLine("---------------------------------");
+            Console.Write("Escolha a opção desejada: ");
+            int n = int.Parse(Console.ReadLine());
 
-            Pessoa pessoa = new Pessoa(nome, cpf);
-
-            Console.Write("É PCD? (S/N): ");
-            char c = char.Parse(Console.ReadLine());
-            if (c == 's')
+            switch (n)
             {
-                pessoa.isPcd = true;
+                case 1:
+                    servicoDeCadastro.CadastrarPessoa(servicoDeReserva, palestra);
+                    break;
+                case 2:
+                    servicoDeReserva.ExibirAssentos(palestra);
+                    break;
+                default:
+                    break;
             }
-
-            Console.WriteLine(pessoa);
-            Ingresso ingresso = new Ingresso(pessoa, DateTime.Now);
-            Console.WriteLine(ingresso);
 
             //Seleção de assentos
 
-            servicoDeReserva.ExibirAssentos(palestra);
-
-            Console.WriteLine("Escolha o assento: ");
-            string opt = Console.ReadLine();
-
-            servicoDeReserva.EscolherAssento(opt, palestra, ingresso);
+            
 
             //Visualizar assentos após escolha
 

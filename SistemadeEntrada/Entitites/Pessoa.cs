@@ -11,21 +11,14 @@ namespace SistemadeEntrada.Entitites
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public bool isPcd { get; set; }
-
-        public Pessoa()
-        {
-
+        public Pessoa(){
         }
-
-        public Pessoa(string nome, string cpf)
-        {
+        public Pessoa(string nome, string cpf){
             Nome = nome;
             Cpf = cpf;
             this.isPcd = false;
         }
-
-        public override string ToString()
-        {
+        public override string ToString(){
             return "Nome: " + Nome + "/ CPF: " + Cpf + "/ PCD: " + isPcd;
         }
     }

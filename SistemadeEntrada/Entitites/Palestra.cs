@@ -10,12 +10,10 @@ namespace SistemadeEntrada.Entitites
     {
         public Assento[,] Assentos; 
         public HashSet<Ingresso> Ingressos = new HashSet<Ingresso>();
-
         public Palestra()
         {
             Assentos = new Assento[5, 10];
         }
-
         public void adicionarIngresso(Ingresso ingresso)
         {
             Ingressos.Add(ingresso);
