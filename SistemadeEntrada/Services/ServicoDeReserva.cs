@@ -63,17 +63,24 @@ namespace SistemadeEntrada.Services
 
             Console.WriteLine(linha + " " + coluna);
 
-            if (coluna < 'b' && ingresso.Pessoa.isPcd == false)
+            try
             {
-                throw new DomainException("Assento Inválido");
-            }
-            else
-            {
-                palestra.Assentos[coluna, linha] = new Assento();
-                palestra.Assentos[coluna, linha].Ingresso = ingresso;
-            }
-            
+                if (coluna > 'b' && ingresso.Pessoa.isPcd == false)
+                {
+                    throw new DomainException("Assento Inválido!");
+                }
+                else
+                {
+                    palestra.Assentos[coluna, linha] = new Assento();
+                    palestra.Assentos[coluna, linha].Ingresso = ingresso;
+                }
 
+            }
+            catch (DomainException e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+                Thread.Sleep(2000);
+            }
 
         }
     }
