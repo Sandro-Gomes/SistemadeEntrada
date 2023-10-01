@@ -9,6 +9,9 @@ namespace SistemadeEntrada.Services
         public void ExibirAssentos(Palestra palestra)
         {
             char c = 'a';
+            Console.Clear();
+            Console.WriteLine("  [   P    A    L    C    O    ]");
+            Console.WriteLine();
             for (int i = 0; i < 5; i++)
             {
                 if (i > 0)
@@ -34,6 +37,9 @@ namespace SistemadeEntrada.Services
         public void ExibirAssentosPcd(Palestra palestra)
         {
             char c = 'a';
+            Console.Clear();
+            Console.WriteLine("  [   P    A    L    C    O    ]");
+            Console.WriteLine();
             for (int i = 0; i < 5; i++)
             {
                 if (i > 0)
@@ -71,17 +77,36 @@ namespace SistemadeEntrada.Services
                 }
                 else
                 {
-                    palestra.Assentos[coluna, linha] = new Assento();
+                    palestra.Assentos[coluna, linha] = new Assento(opt);                   
                     palestra.Assentos[coluna, linha].Ingresso = ingresso;
+                    palestra.Assentos[coluna, linha].Ingresso.Assento = opt;
                 }
 
             }
             catch (DomainException e)
             {
+                Console.Clear();
                 Console.WriteLine("Erro: " + e.Message);
                 Thread.Sleep(2000);
             }
+        }
 
+        public void EscolherAssento(Palestra palestra, ServicoDeCadastro servicoDeCadastro)
+        {
+            if (palestra.Ingressos.Count < 0)
+            {
+                Console.WriteLine("Aperte qualquer tecla para voltar...");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.Write("Selecione o assento desejado: ");
+                string opt = Console.ReadLine();
+                int coluna = opt[0] - 'a';
+                int linha = opt[1] - '1';
+                Ingresso ingresso = palestra.Assentos[coluna, linha].Ingresso;
+                servicoDeCadastro.ExibirIngresso(palestra, ingresso);
+            }          
         }
     }
 }

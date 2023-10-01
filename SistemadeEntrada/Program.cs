@@ -35,7 +35,8 @@ namespace SistemadeEntrada
                         case 2:
                             Console.Clear();
                             servicoDeReserva.ExibirAssentos(palestra);
-                            Thread.Sleep(2000);
+                            Console.WriteLine();
+                            servicoDeReserva.EscolherAssento(palestra, servicoDeCadastro);
                             break;
                         case 3:
                             Console.Clear();
@@ -50,11 +51,21 @@ namespace SistemadeEntrada
                 }
                 catch (ArgumentException e)
                 {
+                    Console.Clear();
                     Console.WriteLine("Erro: " + e.Message);
+                    Thread.Sleep(2000);
                 }
                 catch (FormatException e)
                 {
+                    Console.Clear();
                     Console.WriteLine("Erro: " + e.Message);
+                    Thread.Sleep(2000);
+                }
+                catch(DomainException e)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Erro: " + e.Message);
+                    Thread.Sleep(2000);
                 }
             }
 
